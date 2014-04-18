@@ -1,0 +1,72 @@
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css">
+</head>
+<script>
+
+var choose="";
+var init=0;
+$(document).ready(function () { 
+        
+        init = 1;
+
+        //
+        setInterval("startRequest()",3000); 
+       
+        //
+        $('#watchers li').click(function(){
+            choose=$(this).attr('value');
+            //need init again
+	        init = 1;
+            //clear content
+	        $('#log').text("")
+        });
+
+        $('#start').click(function(){
+		    $.get("/start?choose="+choose)
+        });
+
+        $('#stop').click(function(){
+		    $.get("/stop?choose="+choose)
+        });
+        
+})
+
+function startRequest() { 
+    $.ajax({
+            url: '/log?init='+init+'&choose='+choose,
+            success: function(data) {
+                //append data
+                $('#log').append(data);
+                //don't need init
+                init = 0;
+            }})
+} 
+
+</script>
+<body>
+<div class="navbar-collapse collapse">
+    <ul id="watchers" class="nav navbar-nav">
+        <li value="tomcat">
+            <a>tomcat</a>
+        </li>
+        <li value="resin">
+            <a>resin</a>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+            <button id="start" type="button" class="btn btn-primary">start</button>
+            <button id="stop" type="button" class="btn btn-primary">stop</button>
+        </div>
+        <div class="col-md-11" id="log">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
