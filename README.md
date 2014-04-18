@@ -4,8 +4,8 @@ webMaster
 a website based on [Flask](https://github.com/mitsuhiko/flask) that can manager the web servers
 
 ###feature
-1.it can start/stop the webserver in html page
-2.it can show log like 'tail -f xxx.log'
+1.it can start/stop the webserver in html page 
+2.it can show log like 'tail -f xxx.log' 
 
 ###how to run
 1.change the path variable in worker.py
