@@ -23,7 +23,7 @@ def start():
 	print 'no such type'
 	return
 
-    popen=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True) 
+    popen = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True) 
         
     return ''
 
@@ -41,7 +41,7 @@ def stop():
 	print 'no such type'
 	return
 
-    popen=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True) 
+    popen = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True) 
         
     return ''
 
